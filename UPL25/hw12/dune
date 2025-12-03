@@ -1,0 +1,57 @@
+(include_subdirs unqualified)
+
+(library
+  (name hw12)
+  (modules hw12) 
+  (libraries ast store parserMain value env mem fstore)
+  (instrumentation (backend bisect_ppx))
+)
+
+(library
+  (name value)
+  (modules value)
+  (libraries ast)
+)
+
+(library
+  (name env)
+  (modules env)
+  (libraries ast)
+)
+
+(library
+  (name fstore)
+  (modules fstore)
+  (libraries ast)
+)
+
+(library
+  (name mem)
+  (modules mem)
+  (libraries ast env value)
+)
+
+(library
+  (name store)
+  (modules store)
+  (libraries ast)
+)
+
+(library
+  (name ast)
+  (modules ast)
+)
+
+(library
+  (name parserMain)
+  (modules parserMain parser lexer)
+  (libraries ast)
+)
+
+(library
+  (name hw12_test)
+  (inline_tests)
+  (modules hw12_test)
+  (libraries hw12)
+  (preprocess (pps ppx_inline_test))
+)

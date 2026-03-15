@@ -1,0 +1,50 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>WebGL 0.Setup</title>
+  <link type="text/css" href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div>WebGL Tutorial 201802168 ilhyeonchu</div>
+  <div>Camera Control</div>
+  <label for="yawslider">Yaw</label>
+  <input type="range" min="0" max="360" value="90" step="0.01" id="yawslider">
+  <label for="pitchslider">Pitch</label>
+  <input type="range" min="-89" max="89" value="0" step="0.01" id="pitchslider">
+  <label for="distanceslider">Distance</label>
+  <input type="range" min="0.2" max="10" value="5" step="0.01" id="distanceslider">
+  <!-- Directional Light Control
+  <div>Light Control</div>
+  <label for="directionx">Yaw</label>
+  <input type="range" min="-5" max="5" value="0" step="0.01" id="directionx">
+  <label for="directiony">Pitch</label>
+  <input type="range" min="-5" max="5" value="1" step="0.01" id="directiony">
+  <label for="directionz">Distance</label>
+  <input type="range" min="-5" max="5" value="0" step="0.01" id="directionz">
+  -->
+  <div>PointLight Control</div>
+  <label for="pointx">Position X</label>
+  <input type="range" min="-5" max="5" value="2" step="0.01" id="pointx">
+  <label for="pointy">Position Y</label>
+  <input type="range" min="-5" max="5" value="1" step="0.01" id="pointy">
+  <label for="pointz">Position Z</label>
+  <input type="range" min="-5" max="5" value="-2" step="0.01" id="pointz">
+  <div>SpotLight Control</div>
+  <label for="spotcutoff">Cutoff</label>
+  <input type="range" min="0" max="90" value="45" step="0.1" id="spotcutoff">
+  <div>Material Control</div>
+  <label for="specularIntensity">Specular Intensity</label>
+  <input type="range" min="0" max="10" value="0" step="0.01" id="specularIntensity">
+  <label for="shininess">Shininess</label>
+  <input type="range" min="1" max="512" value="32" step="0.01" id="shininess">
+  <canvas id="c"></canvas>
+</body>
+
+</html>
+<script src="utils/webgl-utils.js"></script>
+<script src="utils/gl-matrix.js"></script>
+<script src="utils/webgl-obj-loader.js"></script>
+<script type="module" src="index.js"></script>

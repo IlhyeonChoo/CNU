@@ -1,0 +1,9 @@
+answer/
+**/__pycache__/
+**/.ipynb_checkpoints/
+**/*.pyc
+**/.pytest_cache/
+.github/
+**/old/
+**/.DS_Store
+test.py

@@ -1,0 +1,6 @@
+.github/
+**/.DS_Store
+**/.pytest_cache/
+**/.ipynb_checkpoints/
+**/__pycache__/
+solution/

@@ -1,0 +1,5 @@
+length of a: 5
+a: Hello, c: Hello
+c: Hello world
+strcmp(Hello, Hello) = 0
+strcmp(Hello, world) = -1

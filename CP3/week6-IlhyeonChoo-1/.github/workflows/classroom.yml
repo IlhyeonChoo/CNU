@@ -1,0 +1,251 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: test-1-1
+      id: test-1-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-1-1
+        setup-command: gcc code/1-1.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: |-
+          sizeof\(array_pointer\): 8
+          sizeof\(pointer_array\): 40
+          .*
+        comparison-method: regex
+        timeout: 10
+        max-score: 1
+    - name: test-1-2
+      id: test-1-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-1-2
+        setup-command: gcc code/1-2.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: |
+          1
+          2
+          3
+          4
+          5
+          6
+          7
+          8
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-1-3
+      id: test-1-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-1-3
+        setup-command: gcc code/1-3.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: |
+          kim
+          lee
+          park
+          choi
+          jeong
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-1-4
+      id: test-1-4
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-1-4
+        setup-command: gcc code/1-4.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: |
+          8
+          48
+          16
+          4
+          .*
+          .*
+          .*
+          0
+        comparison-method: regex
+        timeout: 10
+        max-score: 1
+    - name: test-2-1
+      id: test-2-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-2-1
+        setup-command: gcc code/2-1.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: "20\n1 2 3 4 5 \n8\n1 2 3 4 5 \n"
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-2-2
+      id: test-2-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-2-2
+        setup-command: gcc code/2-2.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: '21
+
+          '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-2-3
+      id: test-2-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-2-3
+        setup-command: gcc code/2-3.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: "1 2 3 \n4 5 6 \n"
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-2-4
+      id: test-2-4
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-2-4
+        setup-command: gcc code/2-4.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: "1 2 3 \n4 5 6 \n"
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-2-5
+      id: test-2-5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-2-5
+        setup-command: gcc code/2-5.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: '1 2 3 4 5 6 '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-3-1
+      id: test-3-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-3-1
+        setup-command: gcc ./code/3-1.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: "1 2 3 \n4 5 6 \n\n1 2 3 \n4 5 6 \n\n1 2 3 \n4 0 0 \n\n1
+          2 0 \n4 0 0 \n\n"
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-3-2
+      id: test-3-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-3-2
+        setup-command: gcc ./code/3-2.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: |+
+          .*
+          .*
+          .*
+          .*
+          .*
+          .*
+
+        comparison-method: regex
+        timeout: 10
+        max-score: 1
+    - name: test-3-3
+      id: test-3-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-3-3
+        setup-command: gcc ./code/3-3.c -o ./a
+        command: "./a"
+        input: ''
+        expected-output: |
+          .*
+          .*
+          .*
+
+          24
+          12
+          4
+        comparison-method: regex
+        timeout: 10
+        max-score: 1
+    - name: test-3-4-1
+      id: test-3-4-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-3-4-1
+        setup-command: gcc ./code/3-4.c -o ./a
+        command: "./a"
+        input: '0 1
+
+          '
+        expected-output: '2
+
+          '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-3-4-2
+      id: test-3-4-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-3-4-2
+        setup-command: gcc ./code/3-4.c -o ./a
+        command: "./a"
+        input: '1 2
+
+          '
+        expected-output: '6
+
+          '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-1-1_RESULTS: "${{steps.test-1-1.outputs.result}}"
+        TEST-1-2_RESULTS: "${{steps.test-1-2.outputs.result}}"
+        TEST-1-3_RESULTS: "${{steps.test-1-3.outputs.result}}"
+        TEST-1-4_RESULTS: "${{steps.test-1-4.outputs.result}}"
+        TEST-2-1_RESULTS: "${{steps.test-2-1.outputs.result}}"
+        TEST-2-2_RESULTS: "${{steps.test-2-2.outputs.result}}"
+        TEST-2-3_RESULTS: "${{steps.test-2-3.outputs.result}}"
+        TEST-2-4_RESULTS: "${{steps.test-2-4.outputs.result}}"
+        TEST-2-5_RESULTS: "${{steps.test-2-5.outputs.result}}"
+        TEST-3-1_RESULTS: "${{steps.test-3-1.outputs.result}}"
+        TEST-3-2_RESULTS: "${{steps.test-3-2.outputs.result}}"
+        TEST-3-3_RESULTS: "${{steps.test-3-3.outputs.result}}"
+        TEST-3-4-1_RESULTS: "${{steps.test-3-4-1.outputs.result}}"
+        TEST-3-4-2_RESULTS: "${{steps.test-3-4-2.outputs.result}}"
+      with:
+        runners: test-1-1,test-1-2,test-1-3,test-1-4,test-2-1,test-2-2,test-2-3,test-2-4,test-2-5,test-3-1,test-3-2,test-3-3,test-3-4-1,test-3-4-2

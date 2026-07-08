@@ -1,0 +1,408 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: test-1-1
+      id: test-1-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-1-1
+        setup-command: ''
+        command: gcc ./code/1-1/*.c > /dev/null 2> 1-1-got.txt; cat 1-1-got.txt
+        input: ''
+        expected-output: |-
+          .*
+          .*undefined reference to `foo'
+          .*
+        comparison-method: regex
+        timeout: 10
+        max-score: 1
+    - name: test-1-2
+      id: test-1-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-1-2
+        setup-command: gcc ./code/1-2/1-2.c -o a
+        command: "./a"
+        input: ''
+        expected-output: |
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+          log: even
+          log: odd
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-1-3
+      id: test-1-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-1-3
+        setup-command: gcc ./code/1-3/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: |
+          log  0: task1
+          log  0: task1
+          log  1: task1
+          log  1: task1
+          log  2: task1
+          log  2: task1
+          log  3: task1
+          log  3: task1
+          log  4: task1
+          log  4: task1
+          log  0: task2
+          log  5: task2
+          log  1: task2
+          log  6: task2
+          log  2: task2
+          log  7: task2
+          log  3: task2
+          log  8: task2
+          log  5: task3
+          log  9: task3
+          log  6: task3
+          log 10: task3
+          log  7: task3
+          log 11: task3
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-2-1
+      id: test-2-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-2-1
+        setup-command: gcc ./code/2-1/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: '24/3/2026
+
+          '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-2-2
+      id: test-2-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-2-2
+        setup-command: gcc ./code/2-2/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: "-300 -300.000000 300\n"
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-2-3
+      id: test-2-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-2-3
+        setup-command: gcc ./code/2-3/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: |
+          length of a: 5
+          a: Hello, c: Hello
+          c: Hello world
+          strcmp\(Hello, Hello\) = 0
+          strcmp\(Hello, world\) = [^0].*
+        comparison-method: regex
+        timeout: 10
+        max-score: 1
+    - name: test-2-4
+      id: test-2-4
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-2-4
+        setup-command: gcc ./code/2-4/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: |
+          A - alpha:[^0].* digit:0 upper:A lower:a
+          z - alpha:[^0].* digit:0 upper:Z lower:z
+          5 - alpha:0 digit:[^0].* upper:5 lower:5
+          ! - alpha:0 digit:0 upper:! lower:!
+        comparison-method: regex
+        timeout: 10
+        max-score: 1
+    - name: test-2-5
+      id: test-2-5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-2-5
+        setup-command: gcc ./code/2-5/*.c -lm -o a
+        command: "./a"
+        input: ''
+        expected-output: |
+          3.00
+          243.00
+          3.0
+          2.0
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-3-1
+      id: test-3-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-3-1
+        setup-command: gcc ./code/3-1/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: |
+          address of n: .*
+          \*p = 10
+          n = 99
+        comparison-method: regex
+        timeout: 10
+        max-score: 1
+    - name: test-3-2
+      id: test-3-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-3-2
+        setup-command: gcc ./code/3-2/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: |
+          12345678
+          78563412
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-3-3
+      id: test-3-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-3-3
+        setup-command: gcc ./code/3-3/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: |
+          sizeof(int*) = 8
+          sizeof(double*) = 8
+          sizeof(char*) = 8
+          sizeof(void*) = 8
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-3-4
+      id: test-3-4
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-3-4
+        setup-command: gcc ./code/3-4/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: '4
+
+          '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-3-5
+      id: test-3-5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-3-5
+        setup-command: gcc ./code/3-5/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: |
+          a
+          24930
+          hello world
+          h
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-4-1
+      id: test-4-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-4-1
+        setup-command: gcc ./code/4-1/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: "1 2 3 4 5 \n1 2 0 0 0 \n0 0 0 0 0 \n10 20 30 \n"
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-4-2
+      id: test-4-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-4-2
+        setup-command: gcc ./code/4-2/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: |
+          sum: 30
+          avg: 5.00
+          max: 9
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test-4-3
+      id: test-4-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test-4-3
+        setup-command: gcc ./code/4-3/*.c -o a
+        command: "./a"
+        input: ''
+        expected-output: |+
+          address of arr\[0\]: .*
+          address of arr\[0\+1\]: .*
+          &\(arr\[0\]\) - &\(arr\[1\+1\]\) = 4
+
+          address of arr\[1\]: .*
+          address of arr\[1\+1\]: .*
+          &\(arr\[1\]\) - &\(arr\[2\+1\]\) = 4
+
+          address of arr\[2\]: .*
+          address of arr\[2\+1\]: .*
+          &\(arr\[2\]\) - &\(arr\[3\+1\]\) = 4
+
+          address of arr\[3\]: .*
+          address of arr\[3\+1\]: .*
+          &\(arr\[3\]\) - &\(arr\[4\+1\]\) = 4
+
+          address of arr\[4\]: .*
+          address of arr\[4\+1\]: .*
+          &\(arr\[4\]\) - &\(arr\[5\+1\]\) = 4
+
+        comparison-method: regex
+        timeout: 10
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-1-1_RESULTS: "${{steps.test-1-1.outputs.result}}"
+        TEST-1-2_RESULTS: "${{steps.test-1-2.outputs.result}}"
+        TEST-1-3_RESULTS: "${{steps.test-1-3.outputs.result}}"
+        TEST-2-1_RESULTS: "${{steps.test-2-1.outputs.result}}"
+        TEST-2-2_RESULTS: "${{steps.test-2-2.outputs.result}}"
+        TEST-2-3_RESULTS: "${{steps.test-2-3.outputs.result}}"
+        TEST-2-4_RESULTS: "${{steps.test-2-4.outputs.result}}"
+        TEST-2-5_RESULTS: "${{steps.test-2-5.outputs.result}}"
+        TEST-3-1_RESULTS: "${{steps.test-3-1.outputs.result}}"
+        TEST-3-2_RESULTS: "${{steps.test-3-2.outputs.result}}"
+        TEST-3-3_RESULTS: "${{steps.test-3-3.outputs.result}}"
+        TEST-3-4_RESULTS: "${{steps.test-3-4.outputs.result}}"
+        TEST-3-5_RESULTS: "${{steps.test-3-5.outputs.result}}"
+        TEST-4-1_RESULTS: "${{steps.test-4-1.outputs.result}}"
+        TEST-4-2_RESULTS: "${{steps.test-4-2.outputs.result}}"
+        TEST-4-3_RESULTS: "${{steps.test-4-3.outputs.result}}"
+      with:
+        runners: test-1-1,test-1-2,test-1-3,test-2-1,test-2-2,test-2-3,test-2-4,test-2-5,test-3-1,test-3-2,test-3-3,test-3-4,test-3-5,test-4-1,test-4-2,test-4-3

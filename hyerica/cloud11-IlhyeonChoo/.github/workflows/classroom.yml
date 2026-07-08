@@ -1,0 +1,293 @@
+name: Autograding Tests
+on:
+  - push
+  - workflow_dispatch
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Install dependencies
+      run: pip3 install pytest numpy matplotlib
+    - name: Q1
+      id: q1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q1
+        command: pytest test/test_01.py
+        timeout: 10
+        max-score: 1
+    - name: Q2
+      id: q2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q2
+        command: pytest test/test_02.py
+        timeout: 10
+        max-score: 1
+    - name: Q3
+      id: q3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q3
+        command: pytest test/test_03.py
+        timeout: 10
+        max-score: 1
+    - name: Q4
+      id: q4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q4
+        command: pytest test/test_04.py
+        timeout: 10
+        max-score: 1
+    - name: Q5
+      id: q5
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q5
+        command: pytest test/test_05.py
+        timeout: 10
+        max-score: 1
+    - name: Q6
+      id: q6
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q6
+        command: pytest test/test_06.py
+        timeout: 10
+        max-score: 1
+    - name: Q7
+      id: q7
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q7
+        command: pytest test/test_07.py
+        timeout: 10
+        max-score: 1
+    - name: Q8
+      id: q8
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q8
+        command: pytest test/test_08.py
+        timeout: 10
+        max-score: 1
+    - name: Q9
+      id: q9
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q9
+        command: pytest test/test_09.py
+        timeout: 10
+        max-score: 1
+    - name: Q10
+      id: q10
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q10
+        command: pytest test/test_10.py
+        timeout: 10
+        max-score: 1
+    - name: Q11
+      id: q11
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q11
+        command: pytest test/test_11.py
+        timeout: 10
+        max-score: 1
+    - name: Q12
+      id: q12
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q12
+        command: pytest test/test_12.py
+        timeout: 10
+        max-score: 1
+    - name: Q13
+      id: q13
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q13
+        command: pytest test/test_13.py
+        timeout: 10
+        max-score: 1
+    - name: Q14
+      id: q14
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q14
+        command: pytest test/test_14.py
+        timeout: 10
+        max-score: 1
+    - name: Q15
+      id: q15
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q15
+        command: pytest test/test_15.py
+        timeout: 10
+        max-score: 1
+    - name: Q16
+      id: q16
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q16
+        command: pytest test/test_16.py
+        timeout: 10
+        max-score: 1
+    - name: Q17
+      id: q17
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q17
+        command: pytest test/test_17.py
+        timeout: 10
+        max-score: 1
+    - name: Q18
+      id: q18
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q18
+        command: pytest test/test_18.py
+        timeout: 10
+        max-score: 1
+    - name: Q19
+      id: q19
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q19
+        command: pytest test/test_19.py
+        timeout: 10
+        max-score: 1
+    - name: Q20
+      id: q20
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q20
+        command: pytest test/test_20.py
+        timeout: 10
+        max-score: 1
+    - name: Q21
+      id: q21
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q21
+        command: pytest test/test_21.py
+        timeout: 10
+        max-score: 1
+    - name: Q22
+      id: q22
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q22
+        command: pytest test/test_22.py
+        timeout: 10
+        max-score: 1
+    - name: Q23
+      id: q23
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q23
+        command: pytest test/test_23.py
+        timeout: 10
+        max-score: 1
+    - name: Q24
+      id: q24
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q24
+        command: pytest test/test_24.py
+        timeout: 10
+        max-score: 1
+    - name: Q25
+      id: q25
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q25
+        command: pytest test/test_25.py
+        timeout: 10
+        max-score: 1
+    - name: Q26
+      id: q26
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q26
+        command: pytest test/test_26.py
+        timeout: 10
+        max-score: 1
+    - name: Q27
+      id: q27
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q27
+        command: pytest test/test_27.py
+        timeout: 10
+        max-score: 1
+    - name: Q28
+      id: q28
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q28
+        command: pytest test/test_28.py
+        timeout: 10
+        max-score: 1
+    - name: Q29
+      id: q29
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q29
+        command: pytest test/test_29.py
+        timeout: 10
+        max-score: 1
+    - name: Q30
+      id: q30
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q30
+        command: pytest test/test_30.py
+        timeout: 10
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        Q1_RESULTS: "${{steps.q1.outputs.result}}"
+        Q2_RESULTS: "${{steps.q2.outputs.result}}"
+        Q3_RESULTS: "${{steps.q3.outputs.result}}"
+        Q4_RESULTS: "${{steps.q4.outputs.result}}"
+        Q5_RESULTS: "${{steps.q5.outputs.result}}"
+        Q6_RESULTS: "${{steps.q6.outputs.result}}"
+        Q7_RESULTS: "${{steps.q7.outputs.result}}"
+        Q8_RESULTS: "${{steps.q8.outputs.result}}"
+        Q9_RESULTS: "${{steps.q9.outputs.result}}"
+        Q10_RESULTS: "${{steps.q10.outputs.result}}"
+        Q11_RESULTS: "${{steps.q11.outputs.result}}"
+        Q12_RESULTS: "${{steps.q12.outputs.result}}"
+        Q13_RESULTS: "${{steps.q13.outputs.result}}"
+        Q14_RESULTS: "${{steps.q14.outputs.result}}"
+        Q15_RESULTS: "${{steps.q15.outputs.result}}"
+        Q16_RESULTS: "${{steps.q16.outputs.result}}"
+        Q17_RESULTS: "${{steps.q17.outputs.result}}"
+        Q18_RESULTS: "${{steps.q18.outputs.result}}"
+        Q19_RESULTS: "${{steps.q19.outputs.result}}"
+        Q20_RESULTS: "${{steps.q20.outputs.result}}"
+        Q21_RESULTS: "${{steps.q21.outputs.result}}"
+        Q22_RESULTS: "${{steps.q22.outputs.result}}"
+        Q23_RESULTS: "${{steps.q23.outputs.result}}"
+        Q24_RESULTS: "${{steps.q24.outputs.result}}"
+        Q25_RESULTS: "${{steps.q25.outputs.result}}"
+        Q26_RESULTS: "${{steps.q26.outputs.result}}"
+        Q27_RESULTS: "${{steps.q27.outputs.result}}"
+        Q28_RESULTS: "${{steps.q28.outputs.result}}"
+        Q29_RESULTS: "${{steps.q29.outputs.result}}"
+        Q30_RESULTS: "${{steps.q30.outputs.result}}"
+      with:
+        runners: q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19,q20,q21,q22,q23,q24,q25,q26,q27,q28,q29,q30

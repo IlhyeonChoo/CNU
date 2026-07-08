@@ -1,0 +1,3 @@
+Character Robert is located at (5, 10) and has 150 HP.
+Character David is located at (50, 50) and has 120 HP.
+Character Rose is located at (0, 0) and has 110 HP.

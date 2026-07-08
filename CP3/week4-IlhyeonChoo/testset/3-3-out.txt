@@ -1,0 +1,4 @@
+sizeof(int*) = 8
+sizeof(double*) = 8
+sizeof(char*) = 8
+sizeof(void*) = 8

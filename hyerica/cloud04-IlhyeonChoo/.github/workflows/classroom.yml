@@ -1,0 +1,114 @@
+name: Autograding Tests
+on:
+  push:
+    branches:
+      - '*' 
+  workflow_dispatch:
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Install dependencies
+      run: pip3 install pytest
+    - name: Q1
+      id: q1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q1
+        command: pytest test/test_01.py
+        timeout: 10
+        max-score: 1
+    - name: Q2
+      id: q2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q2
+        command: pytest test/test_02.py
+        timeout: 10
+        max-score: 1
+    - name: Q3
+      id: q3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q3
+        command: pytest test/test_03.py
+        timeout: 10
+        max-score: 1
+    - name: Q4
+      id: q4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q4
+        command: pytest test/test_04.py
+        timeout: 10
+        max-score: 1
+    - name: Q5
+      id: q5
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q5
+        command: pytest test/test_05.py
+        timeout: 10
+        max-score: 1
+    - name: Q6
+      id: q6
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q6
+        command: pytest test/test_06.py
+        timeout: 10
+        max-score: 1
+    - name: Q7
+      id: q7
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q7
+        command: pytest test/test_07.py
+        timeout: 10
+        max-score: 1
+    - name: Q8
+      id: q8
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q8
+        command: pytest test/test_08.py
+        timeout: 10
+        max-score: 1
+    - name: Q9
+      id: q9
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q9
+        command: pytest test/test_09.py
+        timeout: 10
+        max-score: 1
+    - name: Q10
+      id: q10
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Q10
+        command: pytest test/test_10.py
+        timeout: 10
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        Q1_RESULTS: "${{steps.q1.outputs.result}}"
+        Q2_RESULTS: "${{steps.q2.outputs.result}}"
+        Q3_RESULTS: "${{steps.q3.outputs.result}}"
+        Q4_RESULTS: "${{steps.q4.outputs.result}}"
+        Q5_RESULTS: "${{steps.q5.outputs.result}}"
+        Q6_RESULTS: "${{steps.q6.outputs.result}}"
+        Q7_RESULTS: "${{steps.q7.outputs.result}}"
+        Q8_RESULTS: "${{steps.q8.outputs.result}}"
+        Q9_RESULTS: "${{steps.q9.outputs.result}}"
+        Q10_RESULTS: "${{steps.q10.outputs.result}}"
+      with:
+        runners: q1,q2,q3,q4,q5,q6,q7,q8,q9,q10

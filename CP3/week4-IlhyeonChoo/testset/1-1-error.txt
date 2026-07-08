@@ -1,0 +1,2 @@
+C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: C:\Users\HELLOO~1\AppData\Local\Temp\ccOXDnYS.o:1-1.c:(.text+0x18): undefined reference to `foo'
+collect2.exe: error: ld returned 1 exit status

@@ -1,0 +1,133 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: test1-1
+      id: test1-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test1-1
+        setup-command: gcc ./code/1-1.c -o 1-1.exe
+        command: "./1-1.exe"
+        input: ''
+        expected-output: '1 2
+
+          '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test1-2
+      id: test1-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test1-2
+        setup-command: gcc ./code/1-2.c -o 1-2.exe
+        command: "./1-2.exe"
+        input: ''
+        expected-output: |
+          7
+          12
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test2-1
+      id: test2-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test2-1
+        setup-command: gcc ./code/2-1.c -o 2-1.exe
+        command: "./2-1.exe"
+        input: ''
+        expected-output: 'State: RUNNING
+
+          '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test2-2
+      id: test2-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test2-2
+        setup-command: gcc ./code/2-2.c -o 2-2.exe
+        command: "./2-2.exe"
+        input: ''
+        expected-output: |
+          RED   = 0
+          GREEN = 1
+          BLUE  = 2
+
+          OK    = 0
+          ERR   = -1
+          BUSY  = 1
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test3-1
+      id: test3-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test3-1
+        setup-command: gcc ./code/3-1.c -o 3-1.exe
+        command: "./3-1.exe"
+        input: ''
+        expected-output: |
+          15
+          5
+          50
+          Null pointer
+          -1
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test3-2
+      id: test3-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test3-2
+        setup-command: gcc ./code/3-2.c -o 3-2.exe
+        command: "./3-2.exe"
+        input: ''
+        expected-output: "1 2 3 5 8 9 \n9 8 5 3 2 1 \n"
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: test3-3
+      id: test3-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test3-3
+        setup-command: gcc ./code/3-3.c -o 3-3.exe
+        command: "./3-3.exe"
+        input: ''
+        expected-output: |
+          ant
+          apple
+          banana
+          orange
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST1-1_RESULTS: "${{steps.test1-1.outputs.result}}"
+        TEST1-2_RESULTS: "${{steps.test1-2.outputs.result}}"
+        TEST2-1_RESULTS: "${{steps.test2-1.outputs.result}}"
+        TEST2-2_RESULTS: "${{steps.test2-2.outputs.result}}"
+        TEST3-1_RESULTS: "${{steps.test3-1.outputs.result}}"
+        TEST3-2_RESULTS: "${{steps.test3-2.outputs.result}}"
+        TEST3-3_RESULTS: "${{steps.test3-3.outputs.result}}"
+      with:
+        runners: test1-1,test1-2,test2-1,test2-2,test3-1,test3-2,test3-3

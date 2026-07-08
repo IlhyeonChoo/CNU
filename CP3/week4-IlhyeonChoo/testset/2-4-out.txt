@@ -1,0 +1,4 @@
+A - alpha:1 digit:0 upper:A lower:a
+z - alpha:2 digit:0 upper:Z lower:z
+5 - alpha:0 digit:1 upper:5 lower:5
+! - alpha:0 digit:0 upper:! lower:!

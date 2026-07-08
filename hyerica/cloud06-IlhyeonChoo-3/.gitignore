@@ -1,0 +1,11 @@
+src/**/__pycache__/
+src/**/.pytest_cache/
+test/**/__pycache__/
+test/**/.pytest_cache/
+.pytest_cache/
+exercise.ipynb
+practice.ipynb
+**/.DS_Store
+.github/
+solution/
+**/*.zip
